@@ -372,9 +372,38 @@ eta_sq
 ```
 
 
+### d) Visualization
+
+```{r}
+ggplot(
+  gym_clean,
+  aes(
+    x = `Workout Type`,
+    y = `Gym Time (min)`,
+    fill = `Workout Type`
+  )
+) +
+  geom_boxplot(
+    alpha = 0.7,
+    outlier.shape = NA
+  ) +
+  geom_jitter(
+    width = 0.15,
+    alpha = 0.7,
+    size = 2
+  ) +
+  labs(
+    x = "Workout type",
+    y = "Gym time (minutes)"
+  ) +
+  theme_classic() +
+  theme(
+    legend.position = "none"
+  )
+```
 
 
-
+### e) Figure caption
 
 
 
