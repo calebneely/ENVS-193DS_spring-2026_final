@@ -9,6 +9,7 @@ format: pdf
 library(tidyverse)
 library(janitor)
 
+nests <- read_csv("nest_data_final.csv")
 ```
 
 
@@ -33,10 +34,36 @@ Part 2: The three bird species did not use habitats in the same way. Habitat use
 One additional variable that could influence the probability of American Avocet microhabitat use is water depth (cm), measured at each survey location using a meter stick or depth gauge. Water depth may affect habitat use because American Avocets forage by sweeping their bills through shallow water, so they may prefer areas with depths that maximize feeding efficiency.
 
 
+## Problem 2 Data analysis
 
+### a) Clean and Wrangle
 
+```{r}
+nests_clean <- nests |>
+  select(case_control, height_cm, ant_species) |>
+  filter(ant_species %in% c("AB", "BBR", "RRB")) |>
+  mutate(
+    ant_species = factor(
+      ant_species,
+      levels = c("BBR", "AB", "RRB"),
+      labels = c(
+        "C. sjostedti",
+        "C. mimosae",
+        "C. nigriceps"
+      )
+    ),
+    ant_species_full = case_when(
+      ant_species == "C. sjostedti" ~ "Crematogaster sjostedti",
+      ant_species == "C. mimosae" ~ "Crematogaster mimosae",
+      ant_species == "C. nigriceps" ~ "Crematogaster nigriceps"
+    )
+  )
 
+str(nests_clean)
 
+nests_clean |>
+  slice_sample(n = 10)
+```
 
 
 
