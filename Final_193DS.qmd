@@ -10,8 +10,10 @@ library(tidyverse)
 library(janitor)
 library(gt)
 library(DHARMa)
+library(rstatix)
 
 nests <- read_csv("nest_data_final.csv")
+gym_data <- read_csv("193 DS personal data - Sheet1.csv")
 ```
 
 
@@ -343,14 +345,31 @@ The probability of bird nest occurrence differed among acacia ant species and ch
 - To answer my research question about how workout type influences the amount of time I spend at the gym, I would use a one-way ANOVA. This analysis is appropriate because my response variable, gym time (minutes), is continuous, while my predictor variable, workout type, is categorical with three groups (Push, Pull, and Legs). A one-way ANOVA allows me to test whether the mean gym time differs among the three workout types and determine whether certain workouts tend to require more time than others.
 
 
+### c) Check Assumptions and Run Test
 
+```{r}
+# Remove days without a workout because N/A is not a workout type
+gym_clean <- gym_data |>
+  filter(`Workout Type` %in% c("Push", "Pull", "Leg"))
 
+# Run a one-way ANOVA testing whether mean gym time differs
+# among Push, Pull, and Leg workouts
+gym_anova <- aov(
+  `Gym Time (min)` ~ `Workout Type`,
+  data = gym_clean
+)
 
+# Display ANOVA results
+summary(gym_anova)
 
+# Calculate eta-squared effect size
+anova_table <- summary(gym_anova)[[1]]
 
+eta_sq <- anova_table$`Sum Sq`[1] /
+  sum(anova_table$`Sum Sq`)
 
-
-
+eta_sq
+```
 
 
 
