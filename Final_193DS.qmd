@@ -5,7 +5,8 @@ format: pdf
 ---
 
 ### Set Up
-```{r}
+```{r setup, include=FALSE}
+
 library(tidyverse)
 library(janitor)
 library(gt)
