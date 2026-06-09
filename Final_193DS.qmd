@@ -405,6 +405,21 @@ ggplot(
 
 ### e) Figure caption
 
+- Figure 1. Gym time by workout type. Points represent individual gym sessions and show the amount of time spent at the gym for Push, Pull, and Leg workouts. Black points represent the mean gym time for each workout type. Colors distinguish workout types, and the plot displays the underlying data used in the one-way ANOVA.
+
+
+### f) Write About Results
+
+- Workout type did not have a significant effect on gym time (one-way ANOVA: F(2, 19) = 0.405, p = 0.673). The effect size was small (η² = 0.041), indicating that workout type explained only about 4.1% of the variation in gym time. Mean gym time was similar among Push, Pull, and Leg workouts, suggesting that the type of workout performed did not strongly influence how long I spent at the gym. Other factors, such as available free time, schedule constraints, or gym crowdedness, may have had a greater influence on workout duration.
+
+
+
+
+
+
+
+
+
 
 
 
