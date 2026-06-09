@@ -66,13 +66,20 @@ nests_clean |>
 ```
 
 
+### b) Response variable
+
+The response variable is nest occurrence, where a value of 1 indicates that a bird nest was present in a tree and a value of 0 indicates that no bird nest was present. Biologically, this variable represents whether a tree was selected and used as a nesting site by birds.
 
 
+### c) Purpose of Study
 
+Tree height:
 
+Tree height is a continuous variable measured in centimeters. As tree height increases, the probability of nest occurrence may increase because taller trees can provide better nesting locations and may be more visible or accessible to birds while also reducing the risk of some predators. This information is discussed in the Methods section, “Nest Site Selection” subsection, where tree characteristics were measured, and is supported by the Results section, where tree height was included as a predictor of nest occurrence.
 
+Acacia ant species:
 
-
+Acacia ant species is a categorical variable with three levels: C. sjostedti, C. mimosae, and C. nigriceps. The probability of nest occurrence may differ among ant species because birds preferentially nest in trees occupied by more aggressive ant species that defend trees against browsing mammals and potential nest predators. This information is described in the Introduction (final paragraph) and supported in the Discussion section, where the authors explain that birds selected trees inhabited by the more aggressive ant species.
 
 
 
