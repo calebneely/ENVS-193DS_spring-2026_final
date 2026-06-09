@@ -338,7 +338,9 @@ The probability of bird nest occurrence differed among acacia ant species and ch
 - During workshop, I received feedback to make the connection between the mountain landscape and the gym data more obvious and to simplify some of the visual elements. I implemented these suggestions by making the peaks correspond more directly to workout duration and reducing unnecessary background details. These changes helped the visualization communicate the data more clearly while still maintaining its artistic and affective style
 
 
+### b) Designing an analysis
 
+- To answer my research question about how workout type influences the amount of time I spend at the gym, I would use a one-way ANOVA. This analysis is appropriate because my response variable, gym time (minutes), is continuous, while my predictor variable, workout type, is categorical with three groups (Push, Pull, and Legs). A one-way ANOVA allows me to test whether the mean gym time differs among the three workout types and determine whether certain workouts tend to require more time than others.
 
 
 
