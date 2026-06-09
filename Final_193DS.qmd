@@ -325,5 +325,36 @@ The probability of bird nest occurrence differed among acacia ant species and ch
 
 
 
+## Problem 3
+
+### a) Comparing Visualizations
+
+- My exploratory visualizations represented the data quantitatively using axes, points, and summary statistics to show relationships between variables such as workout type and gym time. In contrast, my affective visualization represented the data metaphorically as a mountain landscape, where peaks and valleys reflected changes in gym attendance and workout duration over time. The affective visualization focused more on communicating the experience of the data than on precise numerical values.
+
+- All of the visualizations were based on the same gym time dataset and communicated patterns in how often and how long I worked out. Each visualization highlighted variation in gym attendance across days and emphasized periods of higher and lower activity. Although the visual styles differed, they all represented the same underlying trends in my workout behavior.
+
+- The exploratory visualizations showed clear differences in gym time among workout types and revealed day-to-day variation in workout duration. The affective visualization showed similar patterns through changes in mountain height, with taller peaks corresponding to longer workouts and valleys representing rest days. The overall patterns were similar because they were based on the same data, but the affective visualization emphasized the emotional experience of consistency and effort rather than precise statistical comparisons.
+
+- During workshop, I received feedback to make the connection between the mountain landscape and the gym data more obvious and to simplify some of the visual elements. I implemented these suggestions by making the peaks correspond more directly to workout duration and reducing unnecessary background details. These changes helped the visualization communicate the data more clearly while still maintaining its artistic and affective style
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
