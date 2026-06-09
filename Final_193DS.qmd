@@ -13,8 +13,11 @@ Part 1: The co-worker likely used a logistic regression because the response var
 Part 2: The co-worker likely used a chi-square test of independence because both bird species and habitat type are categorical variables, and the goal is to determine whether the distribution of bird species differs among habitat types.
 
 
+### b) Suggestions For Rewriting
 
+Part 1: American Avocets were more likely to use some areas than others depending on their distance from the water's edge, suggesting that proximity to water influences microhabitat selection.
 
+Part 2: The three bird species did not use habitats in the same way. Habitat use differed among species, indicating that each species may prefer different habitat types within the San Francisco Bay.
 
 
 
