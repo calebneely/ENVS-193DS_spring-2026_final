@@ -4,6 +4,14 @@ author: "Caleb Neely"
 format: pdf
 ---
 
+### Set Up
+```{r}
+library(tidyverse)
+library(janitor)
+
+```
+
+
 ## Problem 1: Research writing
 
 ### a) Transparent statistical methods
@@ -20,7 +28,9 @@ Part 1: American Avocets were more likely to use some areas than others dependin
 Part 2: The three bird species did not use habitats in the same way. Habitat use differed among species, indicating that each species may prefer different habitat types within the San Francisco Bay.
 
 
+### c) Further Analysis
 
+One additional variable that could influence the probability of American Avocet microhabitat use is water depth (cm), measured at each survey location using a meter stick or depth gauge. Water depth may affect habitat use because American Avocets forage by sweeping their bills through shallow water, so they may prefer areas with depths that maximize feeding efficiency.
 
 
 
