@@ -208,7 +208,8 @@ prediction_data <- prediction_data |>
 #### Graph
 
 ```{r}
-# Create a plot showing the observed nest occurrence data and the predicted probabilities from the selected interaction model
+# Create a plot showing the observed nest occurrence data and the predicted 
+# probabilities from the selected interaction model
 ggplot() +
 
 # Add the underlying data as jittered points
@@ -289,7 +290,8 @@ Figure 1. Predicted probability of bird nest occurrence by tree height and acaci
 ### j) Calculate Model Predictions
 
 ```{r}
-# Create a new data frame containing a tree height of 600 cm for each of the three acacia ant species
+# Create a new data frame containing a tree height of 600 cm for each of the 
+# three acacia ant species
 prediction_600 <- tibble(
   height_cm = 600,
   ant_species = factor(
@@ -317,7 +319,9 @@ prediction_600
 ```
 
 
+### k) interpret results
 
+The probability of bird nest occurrence differed among acacia ant species and changed with tree height (Figure 1). At the tallest observed tree height of 600 cm, the predicted probability of nest occurrence was 1.00 for trees occupied by C. sjostedti, 0.741 for trees occupied by C. nigriceps, and 0.205 for trees occupied by C. mimosae. Figure 1 shows that the relationship between tree height and nest occurrence depended on ant species, which is consistent with the interaction model being selected by AIC. Birds may preferentially nest in trees occupied by certain acacia ant species because aggressive ant defenders can help protect nests from predators and herbivores, making those trees safer nesting locations.
 
 
 
