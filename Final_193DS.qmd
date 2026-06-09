@@ -9,6 +9,7 @@ format: pdf
 library(tidyverse)
 library(janitor)
 library(gt)
+library(DHARMa)
 
 nests <- read_csv("nest_data_final.csv")
 ```
@@ -40,10 +41,15 @@ One additional variable that could influence the probability of American Avocet 
 ### a) Clean and Wrangle
 
 ```{r}
+# Create a new cleaned dataset containing only the variables needed for the nest occurrence analysis
 nests_clean <- nests |>
+  # Keep only the response variable, tree height, and ant species columns
   select(case_control, height_cm, ant_species) |>
+  # Keep only trees occupied by the three focal ant species
   filter(ant_species %in% c("AB", "BBR", "RRB")) |>
+  # Recode and reorder ant species information
   mutate(
+    # Convert the ant species codes into a factor and set the desired order
     ant_species = factor(
       ant_species,
       levels = c("BBR", "AB", "RRB"),
@@ -53,15 +59,16 @@ nests_clean <- nests |>
         "C. nigriceps"
       )
     ),
+     # Create a new column containing the full scientific name of each ant species
     ant_species_full = case_when(
       ant_species == "C. sjostedti" ~ "Crematogaster sjostedti",
       ant_species == "C. mimosae" ~ "Crematogaster mimosae",
       ant_species == "C. nigriceps" ~ "Crematogaster nigriceps"
     )
   )
-
+# Display the structure of the cleaned dataset to verify variable types and dimensions
 str(nests_clean)
-
+# Display 10 randomly selected rows from the cleaned dataset
 nests_clean |>
   slice_sample(n = 10)
 ```
@@ -86,22 +93,27 @@ Acacia ant species is a categorical variable with three levels: C. sjostedti, C.
 ### d) Table of Models
 
 ```{r}
+# Create a table that summarizes the two candidate logistic regression models
 model_table <- tibble(
-  `Model Number` = c("Additive Model", "Interactive Model"),
+  # Give each model a descriptive name
+  `Model Name` = c("Additive Model", "Interactive Model"),
+  # Identify the response variable for both models
   `Response Variable` = c(
     "Nest occurrence",
     "Nest occurrence"
   ),
+  # Describe the predictors included in each model
   `Predictors` = c(
     "Tree height + acacia ant species",
     "Tree height + acacia ant species + tree height x acacia ant species"
   ),
+  # State whether each model includes an interaction term
   `Interaction Term` = c(
     "No",
     "Yes"
   )
 )
-
+# Display the model table
 model_table |>
   gt() |>
   tab_header(
@@ -113,12 +125,13 @@ model_table |>
 ### e) Run the models
 
 ```{r}
+# Run the additive logistic regression model
 additive_model <- glm(
   case_control ~ height_cm + ant_species,
   data = nests_clean,
   family = binomial
 )
-
+# Run the interaction logistic regression model
 interaction_model <- glm(
   case_control ~ height_cm * ant_species,
   data = nests_clean,
@@ -136,8 +149,26 @@ AIC(additive_model, interaction_model)
 The best model as determined by Akaike’s Information Criterion (AIC) was the logistic regression model predicting nest occurrence from tree height, acacia ant species, and the interaction between tree height and acacia ant species. This model had a lower AIC value (237.804) than the model containing only the additive effects of tree height and acacia ant species (258.743), indicating stronger support for the interaction model.
 
 
+### g) Check the diagnostics
 
+```{r}
+# Simulate residuals from the selected model
+interaction_residuals <- simulateResiduals(
+  fittedModel = interaction_model
+)
 
+# Diagnostic plots
+plot(interaction_residuals)
+
+# Test for uniformity
+testUniformity(interaction_residuals)
+
+# Test for dispersion
+testDispersion(interaction_residuals)
+
+# Test for outliers
+testOutliers(interaction_residuals)
+```
 
 
 
