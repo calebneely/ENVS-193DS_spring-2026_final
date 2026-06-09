@@ -245,4 +245,18 @@ ggplot() +
   )
 ```
 
+### i) Write a Caption
+
+Figure 1. Predicted probability of bird nest occurrence by tree height and acacia ant species. Points represent individual trees, where 0 indicates no bird nest was present and 1 indicates a bird nest was present. Colored lines show the predicted probability of nest occurrence from the selected logistic regression model, and shaded ribbons represent 95% confidence intervals around the predictions. Separate panels display predictions for trees occupied by Crematogaster sjostedti, Crematogaster mimosae, and Crematogaster nigriceps. Data source: Lujan, E., Nielsen, R., Short, Z., Wicks, S., Nderitu Watetu, W., Malingati Khasoha, L., Palmer, T. M., Goheen, J. R., & Alston, J. M. (2023). Data, code, and metadata for: Symbiotic acacia ants drive nesting behavior by birds in an African savanna [Data set]. Zenodo. https://doi.org/10.5281/zenodo.8373322
+
+
+
+
+
+
+
+
+
+
+
 
