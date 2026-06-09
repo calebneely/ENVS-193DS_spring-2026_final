@@ -82,7 +82,27 @@ Acacia ant species:
 Acacia ant species is a categorical variable with three levels: C. sjostedti, C. mimosae, and C. nigriceps. The probability of nest occurrence may differ among ant species because birds preferentially nest in trees occupied by more aggressive ant species that defend trees against browsing mammals and potential nest predators. This information is described in the Introduction (final paragraph) and supported in the Discussion section, where the authors explain that birds selected trees inhabited by the more aggressive ant species.
 
 
+d) Table of Models
 
+```{r}
+model_table <- tibble(
+  model_number = c("Model 1", "Model 2"),
+  response_variable = c(
+    "Nest occurrence",
+    "Nest occurrence"
+  ),
+  predictors = c(
+    "Tree height + acacia ant species",
+    "Tree height + acacia ant species + tree height × acacia ant species"
+  ),
+  interaction_term = c(
+    "No",
+    "Yes"
+  )
+)
+
+model_table
+```
 
 
 
