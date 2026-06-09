@@ -173,6 +173,40 @@ testOutliers(interaction_residuals)
 
 ### h) Visualize the Model Predictions
 
+#### Predictions
+
+```{r}
+# Create a sequence of tree heights for each ant species
+prediction_data <- expand.grid(
+  height_cm = seq(
+    min(nests_clean$height_cm),
+    max(nests_clean$height_cm),
+    length.out = 100
+  ),
+  ant_species = levels(nests_clean$ant_species)
+)
+
+# Generate model predictions
+predictions <- predict(
+  interaction_model,
+  newdata = prediction_data,
+  type = "link",
+  se.fit = TRUE
+)
+
+# Calculate predicted probabilities and confidence intervals
+prediction_data <- prediction_data |>
+  mutate(
+    predicted_probability = plogis(predictions$fit),
+    lower_ci = plogis(predictions$fit - 1.96 * predictions$se.fit),
+    upper_ci = plogis(predictions$fit + 1.96 * predictions$se.fit)
+  )
+```
+
+
+
+#### Graph
+
 ```{r}
 # Create a plot showing the observed nest occurrence data and the predicted probabilities from the selected interaction model
 ggplot() +
@@ -218,9 +252,11 @@ ggplot() +
 
   # Set y-axis limits and tick marks to represent probabilities
   scale_y_continuous(
-    limits = c(0, 1),
-    breaks = seq(0, 1, 0.25)
-  ) +
+  breaks = seq(0, 1, 0.25)
+) +
+coord_cartesian(
+  ylim = c(0, 1)
+) +
 
   # Add informative axis labels
   labs(
@@ -250,8 +286,35 @@ ggplot() +
 Figure 1. Predicted probability of bird nest occurrence by tree height and acacia ant species. Points represent individual trees, where 0 indicates no bird nest was present and 1 indicates a bird nest was present. Colored lines show the predicted probability of nest occurrence from the selected logistic regression model, and shaded ribbons represent 95% confidence intervals around the predictions. Separate panels display predictions for trees occupied by Crematogaster sjostedti, Crematogaster mimosae, and Crematogaster nigriceps. Data source: Lujan, E., Nielsen, R., Short, Z., Wicks, S., Nderitu Watetu, W., Malingati Khasoha, L., Palmer, T. M., Goheen, J. R., & Alston, J. M. (2023). Data, code, and metadata for: Symbiotic acacia ants drive nesting behavior by birds in an African savanna [Data set]. Zenodo. https://doi.org/10.5281/zenodo.8373322
 
 
+### j) Calculate Model Predictions
 
+```{r}
+# Create a new data frame containing a tree height of 600 cm for each of the three acacia ant species
+prediction_600 <- tibble(
+  height_cm = 600,
+  ant_species = factor(
+    c(
+      "C. sjostedti",
+      "C. mimosae",
+      "C. nigriceps"
+    ),
+    levels = levels(nests_clean$ant_species)
+  )
+)
 
+# Calculate predicted probabilities using the selected interaction model
+prediction_600 <- prediction_600 |>
+  mutate(
+    predicted_probability = predict(
+      interaction_model,
+      newdata = prediction_600,
+      type = "response"
+    )
+  )
+
+# Display the predicted probabilities
+prediction_600
+```
 
 
 
