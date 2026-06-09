@@ -127,10 +127,13 @@ interaction_model <- glm(
 ```
 
 
+### f) Select the best model
 
+```{r}
+AIC(additive_model, interaction_model)
+```
 
-
-
+The best model as determined by Akaike’s Information Criterion (AIC) was the logistic regression model predicting nest occurrence from tree height, acacia ant species, and the interaction between tree height and acacia ant species. This model had a lower AIC value (237.804) than the model containing only the additive effects of tree height and acacia ant species (258.743), indicating stronger support for the interaction model.
 
 
 
