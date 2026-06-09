@@ -8,6 +8,7 @@ format: pdf
 ```{r}
 library(tidyverse)
 library(janitor)
+library(gt)
 
 nests <- read_csv("nest_data_final.csv")
 ```
@@ -86,22 +87,26 @@ d) Table of Models
 
 ```{r}
 model_table <- tibble(
-  model_number = c("Model 1", "Model 2"),
-  response_variable = c(
+  `Model Number` = c("Model 1", "Model 2"),
+  `Response Variable` = c(
     "Nest occurrence",
     "Nest occurrence"
   ),
-  predictors = c(
+  `Predictors` = c(
     "Tree height + acacia ant species",
-    "Tree height + acacia ant species + tree height × acacia ant species"
+    "Tree height + acacia ant species + interaction"
   ),
-  interaction_term = c(
+  `Interaction Term` = c(
     "No",
     "Yes"
   )
 )
 
-model_table
+model_table |>
+  gt() |>
+  tab_header(
+    title = "Candidate Logistic Regression Models"
+  )
 ```
 
 
